@@ -7,8 +7,6 @@
 // @match        http://*/*
 // @match        https://*/*
 // @icon         https://th.bing.com/th/id/Rc5a1cb30a1fbd54b7162e66c1553c44c?rik=p2lq2y9C0Q16Ug&riu=http%3a%2f%2fp2.music.126.net%2fNtEk0wr-AFaiiHDUFNMolg%3d%3d%2f1386484168453013.jpg%3fsize%3d400x400%26imageView%26thumbnail%3d580x0&ehk=BIplhCK%2fUya08rUBbwSfys9hGtKArBcmCs1C2J9kqzA%3d&risl=&pid=ImgRaw
-// @require      http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js
-// @require      http://code.jquery.com/jquery-1.11.0.min.js
 // @updateurl    https://github.com/army-red/Tampermonkey/raw/main/TextBlocker.user.js
 // @grant        none
 // ==/UserScript==
