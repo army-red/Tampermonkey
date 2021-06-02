@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <style type="text/css">
+
+    </style>
+
+    <div id="layer" style="left:0;width:30%;height:360px;z-index: 100;position:fixed;z-index:999;display:flex  ;border-radius: 72px;background: linear-gradient(145deg, #c6cbce, #ebf2f5);box-shadow:  29px 29px 67px #c4c9cc,-29px -29px 67px #f4fbfe;">
+        <div style="width: 100%; height: 100%; padding: 10px;">
+
+            <br /><br />
+            <h3 style="font-family: 'Verdana'; color: #004242; ">upload .csv file</h3>
+
+
+
+
+            <div class="combimed file" style="height: 80px">
+
+                <input id="file" style="position: absolute; color: #dde4e3; opacity: 0.9; margin-bottom: 10px; height: 50px; width: 80%; border-radius: 25px; background: #dde4e3; box-shadow: 10px 10px 30px #386963, -10px -10px 30px #4c8d85; " title="choose files" type="file"
+                    accept=".csv" onchange="uploadfile();" />
+                <div id="hideFileInputButton" style='position: absolute; color: #dde4e3; opacity: 1; margin-bottom: 10px; height: 50px; width: 80%; border-radius: 25px; background: #dde4e3; box-shadow: 10px 10px 30px #386963, -10px -10px 30px #4c8d85;pointer-events:none; z-index: 2; ;'>
+                    <div style="color: #004242;margin-left:20%;margin-top:10px ;">
+                        Click To Upload
+                    </div>
+                </div>
+
+            </div>
+
+            <button id="btnSave " style="color: black; opacity: 0.9; height: 50px;width: 30%;border-radius: 20px;background: #dde4e3;box-shadow: 4px 4px 8px #386963,-4px -4px 8px #4c8d85;border: none; z-index: 5; " type="submit
+                        " onclick="saveToStorage() ">Upload</button>
+            <button id="btnLoadFromLocalStorage " style="color: black; opacity: 0.9; height: 50px;width: 30%;border-radius: 20px;background: #dde4e3;box-shadow: 4px 4px 8px #386963,-4px -4px 8px #4c8d85;border: none; z-index: 5; " onclick="loadFromLocalStorage() ">Load</button>
+            <button id="btnClearLocalStorage " style="color: black; opacity: 0.9; height: 50px;width: 30%;border-radius: 20px;background: #dde4e3;box-shadow: 4px 4px 8px #386963,-4px -4px 8px #4c8d85;border: none; z-index: 5; " onclick="removeLocalStorage() ">Clear</button>
+            <div id="result"> </div>
+            <div style="border: 1px dashed red; ">
+            </div>
+
+            <div style="margin-top:20px">
+                <input id="replace" type="text" style="color: black; opacity: 0.9; height: 50px;width: 55%;border-radius: 20px;background: #dde4e3;box-shadow: 4px 4px 8px #386963,-4px -4px 8px #4c8d85;border: none; z-index: 5; " />
+                <button onclick="fetchText()" style="color: black; opacity: 0.9; height: 50px;width: 30%;border-radius: 20px;background: #dde4e3;box-shadow: 4px 4px 8px #386963,-4px -4px 8px #4c8d85;border: none; z-index: 5; ">Cofirm</button>
+            </div>
+
+
+
+        </div>
+
+        <div style="text-align:right;padding:0.8em;border-bottom:none;margin-right: 30px; margin-top: 30px; "><a href="javascript:; " onclick="closelayer() " style="color:#ffffff;background-color:#000000;width:80px;height:80px;text-align:center;padding:0.5em;border-radius:40px;padding-left:1em;padding-right:1em; ">×</a></div>
+
+
+    </div>
+
+
+    <script>
+        var isLoaded = false;
+        var text = '';
+
+        function uploadfile() {
+
+
+            let reads = new FileReader();
+            file = document.getElementById('file').files[0];
+            reads.readAsText(file, 'gb2312'); //utf-8
+            console.log(reads);
+            reads.onload = function(e) {
+                console.log(e)
+                    // document.getElementById('result').innerText = this.result
+                    // document.getElementById('result').innerText = e.target.result;
+                text = e.target.result;
+                // document.getElementById('result').innerText = text + "\nfrom text " + typeof(text);
+                isLoaded = true;
+            };
+
+        }
+
+
+
+        function saveToStorage() {
+            alert("※上传成功ヽ(･ω･´ﾒ)※ ");
+            localStorage.setItem("testForCSV ", text);
+        }
+
+        function loadFromLocalStorage() {
+            alert(localStorage["testForCSV "]);
+        }
+
+        function removeLocalStorage() {
+            localStorage.removeItem("testForCSV ");
+
+        }
+
+        function fetchText() {
+            var replaceText = document.getElementById("replace").value;
+            document.getElementById("replace").value = "";
+
+        }
+    </script>
+</body>
+
+</html>
